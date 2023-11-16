@@ -1,0 +1,29 @@
+@host=http://127.0.0.1:8000
+@username=new_user
+@email=new@user.com
+@password=new_user_password
+@token=981fc92193feaa0336fbc03c835735fe246daed4
+
+### Create new account
+POST {{host}}/auth/users/
+Content-Type: application/json
+
+{
+    "username": "{{username}}",
+    "email": "{{email}}",
+    "password": "{{password}}",
+    "re_password": "{{password}}"
+}
+
+### Login
+POST {{host}}/auth/token/login/
+Content-Type: application/json
+
+{
+    "username": "{{username}}",
+    "password": "{{password}}"
+}
+
+### Logout
+POST {{host}}/auth/token/logout/
+Authorization: token {{token}}
